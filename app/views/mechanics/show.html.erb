@@ -1,0 +1,14 @@
+<p> Name: <%= @mechanic.name %> </p>
+<p> YoE: <%= @mechanic.experience %> </p>
+
+<h2>Rides I'm working on that are open!</h2>
+<%= @mechanic.open_rides_by_thrill.each do |ride| %>
+  <li><% ride.name %></li>
+<% end %>
+
+<%= form_tag "/ride_mechanics/#{@mechanic.id}", method: :post, local: true do %>
+  <%= label_tag :id %>
+  <%= text_field_tag :id %>
+
+  <%= submit_tag 'Add Ride' %>
+<% end %>
